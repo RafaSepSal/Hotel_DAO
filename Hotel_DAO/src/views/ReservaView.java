@@ -99,11 +99,13 @@ public class ReservaView {
 		lblPrecio.setBounds(10, 204, 131, 24);
 		frame.getContentPane().add(lblPrecio);
 		
-		lblDisponibilidad = new JLabel(textCheck);
+		lblDisponibilidad = new JLabel("DISPONIBLE");
 		lblDisponibilidad.setHorizontalAlignment(SwingConstants.CENTER);
 		lblDisponibilidad.setFont(new Font("Sylfaen", Font.BOLD, 25));
 		lblDisponibilidad.setForeground(Color.GREEN);
 		lblDisponibilidad.setBounds(203, 53, 221, 46);
+		lblDisponibilidad.setText("DISPONIBLE");
+		lblDisponibilidad.setText(textCheck);
 		frame.getContentPane().add(lblDisponibilidad);
 		
 		b = bungalows.get(indexVista);
@@ -118,7 +120,9 @@ public class ReservaView {
 					b.setDisponible(Estado.Ocupado);
 					JOptionPane.showMessageDialog(btnReservar, "¡Reserva realizada! El horario de entrada del hotel es antes de las 18h, y de salida antes de las 13h.");
 					Estado check = b.getDisponible();
-					checkReserva(b, check);
+					Estado check1 = checkReserva(b, check);
+					checkedReserva(b, check1);
+					lblDisponibilidad.setText(textCheck);
 				} else {
 					JOptionPane.showMessageDialog(btnReservar, "Reserva no disponible: bungalow ocupado");
 				}
@@ -144,7 +148,9 @@ public class ReservaView {
 					lblBaños.setText(String.valueOf(b.getBaños()) + " baños");
 					lblPrecio.setText(String.valueOf(b.getPrecio()) + " €");
 					Estado check = b.getDisponible();
-					checkReserva(b, check);
+					Estado check1 = checkReserva(b, check);
+					checkedReserva(b, check1);
+					lblDisponibilidad.setText(textCheck);
 				}
 			}
 		});
@@ -167,7 +173,9 @@ public class ReservaView {
 					lblBaños.setText(String.valueOf(b.getBaños()) + " baños");
 					lblPrecio.setText(String.valueOf(b.getPrecio()) + " €");
 					Estado check = b.getDisponible();
-					checkReserva(b, check);
+					Estado check1 = checkReserva(b, check);
+					checkedReserva(b, check1);
+					lblDisponibilidad.setText(textCheck);
 				}
 			}
 		});
